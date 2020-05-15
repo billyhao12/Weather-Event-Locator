@@ -6,15 +6,14 @@ $('#searchBtn').on('click',function(){
   
 
   var city = $('#search-input').val();
+  
 
   
  fetchDataWeather(city);
  
 })
 
-
-
-   
+  
 
     
     function fetchDataWeather(city){
