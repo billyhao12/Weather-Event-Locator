@@ -141,42 +141,30 @@ $('#searchBtn').on('click',function(){
     var weatherCondition = weatherObject.weather[0].main;
     console.log(weatherCondition)
     
+    var spanIndex = 1;
 
-
-     if ( weatherCondition === 'Rain'){
-
-   
-
+     if ( weatherCondition == 'Rain'){
       for(var i = 0; i < eventsObject.results.length; i ++){
-
-        console.log(i)
-
-          // Need to loop through an array within an array
-    /*    eventsObject.results[i].labels.array.forEach(element => {
-
-          console.log('Testing')
-          
-        });  */
- 
-       /*  if (eventsObject.results[i].labels === "outdoor"){
-
-          console.log(i)
-        } */
-
+        eventsObject.results[i].labels.forEach(element => {
+          if(element == "observance" 
+          || element=="food" 
+          || element=="conference"){
+            $("#event-"+ spanIndex).text(eventsObject.results[i].title);
+            spanIndex++;
+          }
+        });
       }
-
-      console.log(eventsObject.results[0].labels);
-
-
-
-      console.log('True');
-
-      
-
     } 
-
-    else{  
-      console.log('False')
+    else if ( weatherCondition == 'Clear Sky'){
+      for(var i = 0; i < eventsObject.results.length; i ++){
+        eventsObject.results[i].labels.forEach(element => {
+          if(element == "outdoor"
+          || element== "concert"){
+            $("#event-"+ spanIndex).text(eventsObject.results[i].title);
+            spanIndex++;
+          }
+        });
+      }
     } 
 
   }
