@@ -142,45 +142,34 @@ $('#searchBtn').on('click',function(){
     var weatherCondition = weatherObject.weather[0].main;
     console.log(weatherCondition)
     
+    var spanIndex = 1;
 
 
-     if ( weatherCondition === 'Clouds'){
-
-   
-
+     if ( weatherCondition == 'Rain'){
       for(var i = 0; i < eventsObject.results.length; i ++){
-
-
-        console.log(eventsObject.results[i].labels);
-
         eventsObject.results[i].labels.forEach(element => {
-          
-       //   console.log(element, 'element');
-       elementsArray.push(element)
-         
-
-
+          if(element == "observance" 
+          || element=="food" 
+          || element=="conference"){
+            $("#event-"+ spanIndex).text(eventsObject.results[i].title);
+            spanIndex++;
+          }
         });
-
-      
-   
-       if  (eventsObject.results[i].labels === "outdoor"){
-
-          console.log(i)
-        } 
-
       }
-
-
-
-      console.log('True');
-
-      
+    }
+    else if ( weatherCondition === 'Clouds'){
 
     } 
-
-    else{  
-      console.log('False')
+    else if ( weatherCondition == 'Clear Sky'){
+      for(var i = 0; i < eventsObject.results.length; i ++){
+        eventsObject.results[i].labels.forEach(element => {
+          if(element == "outdoor"
+          || element== "concert"){
+            $("#event-"+ spanIndex).text(eventsObject.results[i].title);
+            spanIndex++;
+          }
+        });
+      }
     } 
 
   }
