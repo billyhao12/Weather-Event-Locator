@@ -1,21 +1,22 @@
 
 //var city = 'Seattle'
 
+var elementsArray = []
+console.log(elementsArray)
+
 $('#searchBtn').on('click',function(){
   //alert('testing')
   
 
   var city = $('#search-input').val();
+  
 
   
  fetchDataWeather(city);
  
 })
 
-
-
-   
-
+  
     
     function fetchDataWeather(city){
 
@@ -143,6 +144,7 @@ $('#searchBtn').on('click',function(){
     
     var spanIndex = 1;
 
+
      if ( weatherCondition == 'Rain'){
       for(var i = 0; i < eventsObject.results.length; i ++){
         eventsObject.results[i].labels.forEach(element => {
@@ -154,6 +156,9 @@ $('#searchBtn').on('click',function(){
           }
         });
       }
+    }
+    else if ( weatherCondition === 'Clouds'){
+
     } 
     else if ( weatherCondition == 'Clear Sky'){
       for(var i = 0; i < eventsObject.results.length; i ++){
